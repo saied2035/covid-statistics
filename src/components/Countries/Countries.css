@@ -4,8 +4,8 @@
 	background: linear-gradient(to bottom,#4168af,#3d60a3);
 	overflow-x: hidden;
 }
-.country-card {
-
+.country-card:hover {
+ z-index: 1;
 }
 #countries-container > .country-card:nth-child(even) {
 	background: #4168af;

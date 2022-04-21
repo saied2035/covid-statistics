@@ -1,4 +1,4 @@
-import getCountries from '../apiFunctions';
+import { getCountries } from '../apiFunctions';
 
 const COUNTRY_LOAD = 'covid-statistics/countries/COUNTRY_LOAD';
 const COUNTRY_LOADED = 'covid-statistics/countries/COUNTRY_LOADED';

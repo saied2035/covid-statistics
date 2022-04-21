@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import Navbar from './components/Navbar/Navbar';
 import Headline from './components/Headline/Headline';
 import Countries from './components/Countries/Countries';
+import CountryRegions from './components/CountryRegions/CountryRegions';
 import { fetchCountries } from './Redux/countries/countries';
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
       <Headline />
       <Routes>
         <Route path="/" element={<Countries />} />
+        <Route path="/:country" element={<CountryRegions />} />
       </Routes>
     </>
   );
