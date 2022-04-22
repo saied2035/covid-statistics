@@ -17,6 +17,7 @@ const Country = ({
         backgroundSize: '50% 80%',
         opacity: '0.2',
       }}
+      loading="lazy"
     />
     <p className="pr3 white f4 b" style={{ marginLeft: '100%' }}>{name}</p>
     <span className="db pr3 white f5 b">

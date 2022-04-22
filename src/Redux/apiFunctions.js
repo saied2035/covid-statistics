@@ -9,7 +9,7 @@ const createDate = () => {
 
   return currentDate;
 };
-const getImage = (name) => {
+export const getImage = (name) => {
   let countryName = name.replace(/[_]/g, '-').replace('*', '').replace(',', '');
   if (countryName === 'diamond-princess' || countryName === 'ms-zaandam') countryName = 'ship';
   if (countryName === 'south-sudan') countryName = 'sudan';
@@ -39,20 +39,20 @@ export const getCountries = async () => {
       image,
     };
   });
-  mappedCountries.sort((a, b) => b.regions.length - a.regions.length);
+  mappedCountries.sort((a, b) => b.newCases - a.newCases);
   return mappedCountries;
 };
+
 export const getRegions = async (countryName) => {
   const date = createDate();
   const response = await fetch(`${countriesAPI}${date}/country/${countryName}`)
     .then((res) => res.json()).then((result) => result);
-
   const { countries } = Object.values(response.dates)[0];
   const { regions, name, today_new_confirmed: newCases } = Object.values(countries)[0];
   const mappedRegions = regions.map((region) => ({
     id: region.id,
     name: region.name,
-    newCases: region.today_new_confirmed,
+    newCases: region.today_new_confirmed ? region.today_new_confirmed : 0,
   }));
   mappedRegions.sort((a, b) => b.newCases - a.newCases);
   return { countryName: name, newCases, regions: mappedRegions };

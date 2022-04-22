@@ -1,0 +1,10 @@
+.states-container {
+	display: flex;
+	justify-content: space-between;
+}
+.states-container:nth-child(even) {
+	background: #4168af;
+}
+.states-container:nth-child(odd) {
+	background: #3d60a3;
+}

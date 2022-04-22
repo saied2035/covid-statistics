@@ -1,8 +1,7 @@
 #countries-container {
 	display: grid;
 	grid-template-columns: repeat(auto-fit,minmax(10rem,1.5fr));
-	background: linear-gradient(to bottom,#4168af,#3d60a3);
-	overflow-x: hidden;
+    padding-bottom: 1.5rem;
 }
 .country-card:hover {
  z-index: 1;

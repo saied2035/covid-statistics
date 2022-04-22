@@ -39,7 +39,7 @@ module.exports = {
       use: ['html-loader'],
     },
     {
-      test: /\.(png|svg|jpg|jpeg)$/,
+      test: /\.(png|svg|jpg|jpeg|gif)$/,
       type: 'asset/resource',
       generator: {
         filename: './images/[name][ext]',
