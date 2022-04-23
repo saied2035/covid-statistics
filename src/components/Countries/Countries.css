@@ -1,0 +1,19 @@
+#countries-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  padding-bottom: 1.5rem;
+}
+
+.country-card:hover {
+  z-index: 1;
+}
+
+#countries-container > .country-card:nth-child(even) {
+  background: #4168af;
+  outline: 2px solid #4168af;
+}
+
+#countries-container > .country-card:nth-child(odd) {
+  background: #3d60a3;
+  outline: 2px solid #3d60a3;
+}
