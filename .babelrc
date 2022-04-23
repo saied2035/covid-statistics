@@ -9,6 +9,10 @@
         "runtime": "automatic"
         }
         ]
-      ]
-    
+      ],
+      "env": {
+    "test": {
+      "plugins": ["transform-require-context"],
+    }
+    }
 }
