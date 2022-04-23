@@ -1,13 +1,18 @@
-import { useSelector } from 'react-redux';
+import { useSelector, shallowEqual } from 'react-redux';
 import Country from './Country/Country';
 import gillSans from '../../fonts';
 import loading from '../../loading.gif';
 import './Countries.css';
 
 const Countries = () => {
-  const countryList = useSelector((state) => state.countriesReducer.countries);
+  const countryList = useSelector(
+    (state) => (state.countriesReducer.filteredCountries ? state.countriesReducer.filteredCountries
+      : state.countriesReducer.countries), shallowEqual,
+  );
+  const wait = useSelector((state) => state.countriesReducer.wait, shallowEqual);
+
   return (
-    !countryList.length ? <img className="db center" width="100" height="100" alt="loading" src={loading} />
+    wait ? <img className="db center" width="100" height="100" alt="loading" src={loading} />
       : (
         <>
           <h2 className="white f6 tracked fw3 pa2" style={{ ...gillSans, background: '#35548b' }}>
@@ -24,6 +29,8 @@ const Countries = () => {
                 newCases={country.newCases}
               />
             ))}
+            {!wait && !countryList.length
+              && <p className="white f4 fw4 tc pa3">No Matching Results</p>}
           </main>
         </>
       )

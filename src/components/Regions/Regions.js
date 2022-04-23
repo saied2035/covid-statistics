@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import Region from './Region/Region';
@@ -9,8 +9,8 @@ import loading from '../../loading.gif';
 const Regions = () => {
   const { pathname } = useLocation();
 
-  const regionList = useSelector((state) => state.regionsReducer.regions);
-  const wait = useSelector((state) => state.regionsReducer.wait);
+  const regionList = useSelector((state) => state.regionsReducer.regions, shallowEqual);
+  const wait = useSelector((state) => state.regionsReducer.wait, shallowEqual);
   const dispatch = useDispatch();
   useEffect(() => {
     const countryName = pathname.replace('/', '');
@@ -23,15 +23,13 @@ const Regions = () => {
       <h2 className="white f6 tracked fw3 pa2" style={{ ...gillSans, background: '#35548b' }}>
         {`CITY/TOWN/REGION - ${year}`}
       </h2>
-      <div>
-        {regionList.map((region) => (
-          <Region
-            key={region.id}
-            name={region.name}
-            newCases={region.newCases}
-          />
-        ))}
-      </div>
+      {regionList.map((region) => (
+        <Region
+          key={region.id}
+          name={region.name}
+          newCases={region.newCases}
+        />
+      ))}
       {!regionList.length && !wait ? <p className="white f4 fw4 tc pa3">There is no data</p> : ''}
       {wait ? <img width="100" height="100" className="db center" alt="loading" src={loading} /> : ''}
     </>

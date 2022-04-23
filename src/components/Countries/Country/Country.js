@@ -6,20 +6,20 @@ const Country = ({
 }) => (
   <NavLink
     to={`${pageUrl}`}
-    className="country-card grow pointer flex flex-column justify-end items-end"
+    className="country-card grow pointer flex flex-column justify-center items-center"
     style={{ minHeight: '25vh' }}
   >
     <div
       style={{
-        width: '100%',
+        width: '10rem',
         height: '70%',
         background: ` url(${image}) no-repeat 50% 50%`,
-        backgroundSize: '50% 80%',
+        backgroundSize: 'auto 80%',
         opacity: '0.2',
       }}
       loading="lazy"
     />
-    <p className="pr3 white f4 b" style={{ marginLeft: '100%' }}>{name}</p>
+    <p className="pr3 white f4 b">{name}</p>
     <span className="db pr3 white f5 b">
       Total:
       {` ${total}`}

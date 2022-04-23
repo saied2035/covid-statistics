@@ -1,10 +1,10 @@
-const images = require.context('../images', true);
+const images = require.context('../images', false, /\.(png|jpe?g|svg)$/);
 const countriesAPI = 'https://api.covid19tracking.narrativa.com/api/';
 const createDate = () => {
   const date = new Date();
   const year = date.getFullYear();
   const month = (`0${date.getMonth() + 1}`).slice(-2);
-  const day = (`0${date.getDate()}`).slice(-2);
+  const day = (`0${date.getDate() - 1}`).slice(-2);
   const currentDate = `${year}-${month}-${day}`;
 
   return currentDate;
@@ -40,6 +40,7 @@ export const getCountries = async () => {
     };
   });
   mappedCountries.sort((a, b) => b.newCases - a.newCases);
+
   return mappedCountries;
 };
 
@@ -57,3 +58,4 @@ export const getRegions = async (countryName) => {
   mappedRegions.sort((a, b) => b.newCases - a.newCases);
   return { countryName: name, newCases, regions: mappedRegions };
 };
+getCountries();

@@ -1,6 +1,6 @@
 #countries-container {
 	display: grid;
-	grid-template-columns: repeat(auto-fit,minmax(10rem,1.5fr));
+	grid-template-columns: repeat(auto-fit,minmax(10rem,1fr));
     padding-bottom: 1.5rem;
 }
 .country-card:hover {
